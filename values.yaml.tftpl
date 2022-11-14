@@ -1,0 +1,45 @@
+global:
+  enabled: false
+  name: consul
+  datacenter: ${datacenter}
+  image: ${consul_image}
+  acls:
+    manageSystemACLs: true
+    bootstrapToken:
+      secretName: ${secret_name}
+      secretKey: bootstrapToken
+  tls:
+    enabled: true
+    enableAutoEncrypt: true
+    caCert:
+      secretName: ${secret_name}
+      secretKey: caCert
+    caKey:
+      secretName: ${secret_name}
+      secretKey: caKey
+  gossipEncryption:
+    secretName: ${secret_name}
+    secretKey: gossipEncryptionKey
+%{ if is_enterprise ~}
+  enterpriseLicense:
+    secretName: ${secret_name}
+    secretKey: license
+%{ endif ~}
+
+server:
+  enabled: true
+  replicas: 1
+
+client:
+  enabled: true
+
+ui:
+  enabled: true
+  service:
+    type: NodePort
+
+connectInject:
+  enabled: true
+
+controller:
+  enabled: true
