@@ -83,7 +83,6 @@ resource "kubernetes_secret" "consul_secrets" {
   type = "Opaque"
 }
 
-
 resource "local_file" "consul_values_yaml" {
   filename        = "values.yaml"
   file_permission = "0644"

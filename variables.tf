@@ -1,7 +1,7 @@
 variable "name" {
-  description = "The name of this deployment. If this is not provided a random ID will be used."
+  description = "The name of this deployment."
   type        = string
-  default     = ""
+  default     = "consul-dev-deployment"
 }
 
 # AWS

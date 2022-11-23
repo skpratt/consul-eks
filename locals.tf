@@ -1,5 +1,5 @@
 locals {
-  name           = var.name != "" ? var.name : random_string.name[0].result
+  name           = var.name
   is_enterprise  = var.consul_license_path != ""
   consul_license = local.is_enterprise ? file(var.consul_license_path) : "noop"
 }
